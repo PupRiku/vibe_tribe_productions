@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "podcasts",
+  "info": {
+    "singularName": "podcast",
+    "pluralName": "podcasts",
+    "displayName": "Podcast",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "seasons": {
+      "type": "integer",
+      "required": true
+    },
+    "spotify": {
+      "type": "string"
+    },
+    "google": {
+      "type": "string"
+    },
+    "apple": {
+      "type": "string"
+    },
+    "audible": {
+      "type": "string"
+    },
+    "youtube": {
+      "type": "string"
+    },
+    "people": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::person.person",
+      "inversedBy": "podcasts"
+    }
+  }
+}
