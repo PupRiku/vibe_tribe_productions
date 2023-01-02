@@ -4,16 +4,22 @@ import { createTheme } from "@mui/material/styles"
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#C16200",
+      main: "#ff0006",
     },
     secondary: {
-      main: "#40356F",
+      main: "#c09755",
     },
-    blue: {
-      main: "#69E9F5",
+    yellow: {
+      main: "#FFb923",
     },
     grey: {
-      main: "#4D4D4D",
+      main: "#C0C0C0",
+    },
+    magenta: {
+      main: "#FF00FF",
+    },
+    cyan: {
+      main: "#00FFFF",
     },
     black: {
       main: "#0F0F0F",
@@ -30,25 +36,25 @@ const theme = createTheme({
   },
   typography: {
     h1: {
-      color: "#C16200",
+      color: "#ff0006",
     },
     h2: {
       fontSize: "2.5rem",
-      color: "#C16200",
+      color: "#ff0006",
       fontWeight: 700,
     },
     h3: {
       fontSize: "1.5rem",
-      color: "#C16200",
+      color: "#ff0006",
       fontWeight: 700,
     },
     h4: {
       fontSize: "1.25rem",
-      color: "#40356F",
+      color: "#c09755",
       fontWeight: 700,
     },
     subtitle1: {
-      color: "#4D4D4D",
+      color: "#C0C0C0",
       fontWeight: 300,
       fontStyle: "italic",
     },
@@ -56,14 +62,13 @@ const theme = createTheme({
       color: "#0F0F0F",
     },
     caption: {
-      color: "#4D4D4D",
+      color: "#C0C0C0",
     },
     tab: {
-      fontFamily: "Raleway",
       textTransform: "none",
       fontWeight: 700,
       fontSize: "1rem",
-      color: "#EBEBEB",
+      color: "#C0C0C0",
       textDecoration: "none",
     },
   },
