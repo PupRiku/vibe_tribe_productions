@@ -6,7 +6,7 @@ import { CacheProvider } from "@emotion/react"
 import theme from "../src/theme"
 import createEmotionCache from "../src/createEmotionCache"
 import createEmotionServer from "@emotion/server/create-instance"
-// import Header from "../src/ui/Header"
+import Header from "../src/ui/Header"
 // import Footer from "../src/ui/Footer"
 import App from "next/app"
 
@@ -30,7 +30,7 @@ export default function MyApp({
         />
       </Head>
       <ThemeProvider theme={theme}>
-        {/* <Header value={value} setValue={setValue} /> */}
+        <Header value={value} setValue={setValue} />
         <Component {...pageProps} value={value} setValue={setValue} />
         {/* <Footer value={value} setValue={setValue} /> */}
       </ThemeProvider>

@@ -65,11 +65,12 @@ const theme = createTheme({
       color: "#C0C0C0",
     },
     tab: {
+      fontFamily: "Raleway",
       textTransform: "none",
       fontWeight: 700,
       fontSize: "1rem",
-      color: "#C0C0C0",
-      textDecoration: "none",
+      color: "#0f0f0f",
+      textDecorationColor: "transparent",
     },
   },
 })

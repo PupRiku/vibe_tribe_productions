@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import clsx from "clsx"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
-import MuiLink from "@mui/material/Link"
+import { Link as MuiLink } from "@mui/material"
 import { styled } from "@mui/material/styles"
 
 // Add support for the sx prop for consistency with the other branches.
@@ -26,9 +26,7 @@ export const NextLinkComposed = React.forwardRef(function NextLinkComposed(
       shallow={shallow}
       passHref
       locale={locale}
-    >
-      <Anchor ref={ref} {...other} />
-    </NextLink>
+    />
   )
 })
 
