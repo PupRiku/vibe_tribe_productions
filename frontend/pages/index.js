@@ -1,6 +1,7 @@
 import React from "react"
 import Head from "next/head"
 import { fetchAPI } from "../lib/api"
+import Preview from "../src/components/Preview"
 
 import Typography from "@mui/material/Typography"
 import Grid from "@mui/material/Grid"

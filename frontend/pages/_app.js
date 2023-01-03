@@ -25,7 +25,6 @@ const MyApp = ({
   pageProps,
 }) => {
   const [value, setValue] = useState(0)
-  const { global } = pageProps
 
   return (
     <CacheProvider value={emotionCache}>
@@ -35,7 +34,7 @@ const MyApp = ({
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        <link rel="shortcut icon" href={getStrapiMedia(global.favicon)} />
+        {/* <link rel="shortcut icon" href={getStrapiMedia(global.favicon)} /> */}
       </Head>
 
       <ThemeProvider theme={theme}>
@@ -57,14 +56,14 @@ const MyApp = ({
 
 MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx)
-  const globalRes = await fetchAPI("/global", {
-    populate: {
-      favicon: "*",
-      defaultSeo: {
-        populate: "*",
-      },
-    },
-  })
+  // const globalRes = await fetchAPI("/global", {
+  //   populate: {
+  //     favicon: "*",
+  //     defaultSeo: {
+  //       populate: "*",
+  //     },
+  //   },
+  // })
 
   const originalRenderPage = ctx.renderPage
 
@@ -96,7 +95,6 @@ MyApp.getInitialProps = async (ctx) => {
   return {
     ...appProps,
     emotionStyleTags,
-    pageProps: { global: globalRes.data },
   }
 }
 
