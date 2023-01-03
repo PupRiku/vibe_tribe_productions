@@ -1,11 +1,9 @@
 import React from "react"
-import Link from "../Link"
 import Grid from "@mui/material/Grid"
 import { styled, useTheme } from "@mui/material/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
 
 import VTLogo from "../../public/assets/VTLogo"
-import theme from "../theme"
 
 const StyledFooter = styled("footer")(({ theme }) => ({
   display: "flex",
