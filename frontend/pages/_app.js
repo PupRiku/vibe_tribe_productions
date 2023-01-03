@@ -7,7 +7,7 @@ import theme from "../src/theme"
 import createEmotionCache from "../src/createEmotionCache"
 import createEmotionServer from "@emotion/server/create-instance"
 import Header from "../src/ui/Header"
-// import Footer from "../src/ui/Footer"
+import Footer from "../src/ui/Footer"
 import App from "next/app"
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -32,7 +32,7 @@ export default function MyApp({
       <ThemeProvider theme={theme}>
         <Header value={value} setValue={setValue} />
         <Component {...pageProps} value={value} setValue={setValue} />
-        {/* <Footer value={value} setValue={setValue} /> */}
+        <Footer value={value} setValue={setValue} />
       </ThemeProvider>
     </CacheProvider>
   )
