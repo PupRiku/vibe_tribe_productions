@@ -9,11 +9,9 @@ import Button from "@mui/material/Button"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { styled, useTheme } from "@mui/material/styles"
 
-import Link from "../src/Link"
 import theme from "../src/theme"
 
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
-import axios from "axios"
 
 const Highlight = styled("span")(({ theme }) => ({
   color: theme.palette.primary.main,

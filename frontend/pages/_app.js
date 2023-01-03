@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import PropTypes from "prop-types"
 import Head from "next/head"
 import { ThemeProvider } from "@mui/material/styles"
 import { CacheProvider } from "@emotion/react"
@@ -10,8 +9,6 @@ import Header from "../src/ui/Header"
 import Footer from "../src/ui/Footer"
 import App from "next/app"
 import { createContext } from "react"
-import { fetchAPI } from "../lib/api"
-import { getStrapiMedia } from "../lib/media"
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({})
@@ -34,7 +31,6 @@ const MyApp = ({
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        {/* <link rel="shortcut icon" href={getStrapiMedia(global.favicon)} /> */}
       </Head>
 
       <ThemeProvider theme={theme}>
@@ -48,22 +44,8 @@ const MyApp = ({
   )
 }
 
-// MyApp.propTypes = {
-//   Component: PropTypes.elementType.isRequired,
-//   emotionCache: PropTypes.object,
-//   pageProps: PropTypes.object.isRequired,
-// }
-
 MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx)
-  // const globalRes = await fetchAPI("/global", {
-  //   populate: {
-  //     favicon: "*",
-  //     defaultSeo: {
-  //       populate: "*",
-  //     },
-  //   },
-  // })
 
   const originalRenderPage = ctx.renderPage
 
