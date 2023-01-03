@@ -9,16 +9,23 @@ import createEmotionServer from "@emotion/server/create-instance"
 import Header from "../src/ui/Header"
 import Footer from "../src/ui/Footer"
 import App from "next/app"
+import { createContext } from "react"
+import { fetchAPI } from "../lib/api"
+import { getStrapiMedia } from "../lib/media"
+
+// Store Strapi Global object in context
+export const GlobalContext = createContext({})
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
 
-export default function MyApp({
+const MyApp = ({
   Component,
   emotionCache = clientSideEmotionCache,
   pageProps,
-}) {
+}) => {
   const [value, setValue] = useState(0)
+  const { global } = pageProps
 
   return (
     <CacheProvider value={emotionCache}>
@@ -28,23 +35,37 @@ export default function MyApp({
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
+        <link rel="shortcut icon" href={getStrapiMedia(global.favicon)} />
       </Head>
+
       <ThemeProvider theme={theme}>
-        <Header value={value} setValue={setValue} />
-        <Component {...pageProps} value={value} setValue={setValue} />
-        <Footer value={value} setValue={setValue} />
+        <GlobalContext.Provider value={global.attributes}>
+          <Header value={value} setValue={setValue} />
+          <Component {...pageProps} value={value} setValue={setValue} />
+          <Footer value={value} setValue={setValue} />
+        </GlobalContext.Provider>
       </ThemeProvider>
     </CacheProvider>
   )
 }
 
-MyApp.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  emotionCache: PropTypes.object,
-  pageProps: PropTypes.object.isRequired,
-}
+// MyApp.propTypes = {
+//   Component: PropTypes.elementType.isRequired,
+//   emotionCache: PropTypes.object,
+//   pageProps: PropTypes.object.isRequired,
+// }
 
 MyApp.getInitialProps = async (ctx) => {
+  const appProps = await App.getInitialProps(ctx)
+  const globalRes = await fetchAPI("/global", {
+    populate: {
+      favicon: "*",
+      defaultSeo: {
+        populate: "*",
+      },
+    },
+  })
+
   const originalRenderPage = ctx.renderPage
 
   // You can consider sharing the same emotion cache between all the SSR requests to speed up performance.
@@ -59,8 +80,6 @@ MyApp.getInitialProps = async (ctx) => {
           return <App emotionCache={cache} {...props} />
         },
     })
-
-  const appProps = await App.getInitialProps(ctx)
 
   // This is important. It prevents emotion to render invalid HTML.
   // See https://github.com/mui/material-ui/issues/26561#issuecomment-855286153
@@ -77,5 +96,8 @@ MyApp.getInitialProps = async (ctx) => {
   return {
     ...appProps,
     emotionStyleTags,
+    pageProps: { global: globalRes.data },
   }
 }
+
+export default MyApp

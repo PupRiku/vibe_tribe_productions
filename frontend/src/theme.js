@@ -36,12 +36,15 @@ const theme = createTheme({
   },
   typography: {
     h1: {
-      color: "#ff0006",
+      fontFamily: "Raleway",
+      color: "#0F0F0F",
+      fontWeight: 700,
+      fontSize: "5rem",
     },
     h2: {
-      fontSize: "2.5rem",
-      color: "#ff0006",
-      fontWeight: 700,
+      fontFamily: "Raleway",
+      fontSize: "3rem",
+      fontWeight: 500,
     },
     h3: {
       fontSize: "1.5rem",
