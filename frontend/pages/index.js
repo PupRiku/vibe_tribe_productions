@@ -2,6 +2,7 @@ import React from "react"
 import Head from "next/head"
 import { fetchAPI } from "../lib/api"
 import Preview from "../src/components/Preview"
+import Script from "next/script"
 
 import Typography from "@mui/material/Typography"
 import Grid from "@mui/material/Grid"
@@ -52,18 +53,18 @@ const Index = ({ games }) => {
         />
       </Head>
       <Grid container direction="column" alignItems="center">
-        <Grid item>
+        <Grid item sx={{ marginBottom: "3rem" }}>
           <Typography variant="h1">
             Welcome to <Highlight>Vibe Tribe Productions</Highlight>!
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid item sx={{ marginBottom: "3rem" }}>
           <Typography variant="h2">Recent Episodes</Typography>
         </Grid>
-        <Grid item>
+        <Grid item sx={{ marginBottom: "3rem" }}>
           <Preview games={games} />
         </Grid>
-        <Grid item>
+        <Grid item sx={{ marginBottom: "3rem" }}>
           <Button
             variant="contained"
             href="/shows"
@@ -74,6 +75,10 @@ const Index = ({ games }) => {
           </Button>
         </Grid>
       </Grid>
+      <Script
+        src="https://open.spotify.com/embed-podcast/iframe-api/v1"
+        async
+      />
     </Grid>
   )
 }
