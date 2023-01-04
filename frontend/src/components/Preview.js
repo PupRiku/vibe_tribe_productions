@@ -20,6 +20,8 @@ const Preview = ({ games }) => {
     return 0
   })
 
+  const currentSeason = gamesSorted.filter((game) => game.attributes.season2)
+
   return (
     <Grid
       container
@@ -28,7 +30,7 @@ const Preview = ({ games }) => {
       justifyContent="center"
       sx={{ minHeight: "20em" }}
     >
-      {gamesSorted.map((game, i) => {
+      {currentSeason.map((game, i) => {
         return (
           <Grid
             item
