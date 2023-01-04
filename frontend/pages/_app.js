@@ -10,6 +10,7 @@ import Footer from "../src/ui/Footer"
 import App from "next/app"
 import { createContext } from "react"
 import { getToken } from "../lib/api"
+import Script from "next/script"
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({})
@@ -37,6 +38,10 @@ const MyApp = ({
       <ThemeProvider theme={theme}>
         <GlobalContext.Provider value={global.attributes}>
           <Header value={value} setValue={setValue} />
+          <Script
+            src="https://open.spotify.com/embed-podcast/iframe-api/v1"
+            async
+          />
           <Component {...pageProps} value={value} setValue={setValue} />
           <Footer value={value} setValue={setValue} />
         </GlobalContext.Provider>

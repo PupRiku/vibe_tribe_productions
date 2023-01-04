@@ -2,7 +2,6 @@ import React from "react"
 import Head from "next/head"
 import { fetchAPI } from "../lib/api"
 import Preview from "../src/components/Preview"
-import Script from "next/script"
 
 import Typography from "@mui/material/Typography"
 import Grid from "@mui/material/Grid"
@@ -75,10 +74,6 @@ const Index = ({ games }) => {
           </Button>
         </Grid>
       </Grid>
-      <Script
-        src="https://open.spotify.com/embed-podcast/iframe-api/v1"
-        async
-      />
     </Grid>
   )
 }
