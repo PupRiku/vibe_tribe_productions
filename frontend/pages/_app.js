@@ -9,6 +9,7 @@ import Header from "../src/ui/Header"
 import Footer from "../src/ui/Footer"
 import App from "next/app"
 import { createContext } from "react"
+import { getToken } from "../lib/api"
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({})
