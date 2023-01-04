@@ -1,21 +1,23 @@
-import React, { useEffect } from "react"
+import React from "react"
+import Iframe from "react-iframe"
 import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
 
 import { getStrapiMedia } from "../../lib/media"
 
 const Preview = ({ games }) => {
-  useEffect(function mount() {
-    window.onSpotifyIframeApiReady = (IFrameAPI) => {
-      let element = document.getElementById("embed-iframe")
-      let options = {
-        width: "750",
-        height: "300",
-        uri: "spotify:episode:6KTESrWrG3iMO6EParK8Zr",
-      }
-      let callback = (EmbedController) => {}
-      IFrameAPI.createController(element, options, callback)
+  const gamesSorted = [...games].sort((a, b) => {
+    const nameA = a.attributes.name.toUpperCase() // ignore upper and lowercase
+    const nameB = b.attributes.name.toUpperCase() // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1
     }
+    if (nameA > nameB) {
+      return 1
+    }
+
+    // names must be equal
+    return 0
   })
 
   return (
@@ -23,9 +25,10 @@ const Preview = ({ games }) => {
       container
       direction="column"
       alignItems="center"
-      sx={{ minWidth: "100%", minHeight: "20em" }}
+      justifyContent="center"
+      sx={{ minHeight: "20em" }}
     >
-      {games.map((game, i) => {
+      {gamesSorted.map((game, i) => {
         return (
           <Grid
             item
@@ -33,7 +36,11 @@ const Preview = ({ games }) => {
             sx={{ minWidth: "100%", minHeight: "20em" }}
           >
             {i % 2 === 0 ? (
-              <Grid container sx={{ minWidth: "100%", minHeight: "20em" }}>
+              <Grid
+                container
+                sx={{ minWidth: "100%", minHeight: "20em" }}
+                justifyContent="center"
+              >
                 <Grid item key={`image_${game.id}`}>
                   <img
                     src={getStrapiMedia(game.attributes.image)}
@@ -41,7 +48,11 @@ const Preview = ({ games }) => {
                   />
                 </Grid>
                 <Grid item sx={{ marginLeft: "2rem" }}>
-                  <Grid container direction="column">
+                  <Grid
+                    container
+                    direction="column"
+                    sx={{ maxWidth: "46.875rem" }}
+                  >
                     <Grid
                       item
                       key={`title_${game.id}`}
@@ -51,16 +62,42 @@ const Preview = ({ games }) => {
                         {game.attributes.name}
                       </Typography>
                     </Grid>
+                    <Grid
+                      item
+                      key={`desc_${game.id}`}
+                      sx={{ marginBottom: "1rem" }}
+                    >
+                      <Typography variant="body1">
+                        {game.attributes.description.slice(0, 297) + "..."}
+                      </Typography>
+                    </Grid>
                     <Grid item>
-                      <div id="embed-iframe" />
+                      <Iframe
+                        style="border-radius:12px"
+                        src={`https://open.spotify.com/embed/show/${game.attributes.spotifyID}?utm_source=generator`}
+                        width="750"
+                        height="200"
+                        frameBorder="0"
+                        allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                      />
                     </Grid>
                   </Grid>
                 </Grid>
               </Grid>
             ) : (
-              <Grid container sx={{ minWidth: "100%", minHeight: "20em" }}>
-                <Grid item sx={{ marginLeft: "2rem" }}>
-                  <Grid container direction="column">
+              <Grid
+                container
+                sx={{ minWidth: "100%", minHeight: "20em" }}
+                justifyContent="center"
+              >
+                <Grid item>
+                  <Grid
+                    container
+                    direction="column"
+                    sx={{ maxWidth: "46.875rem" }}
+                  >
                     <Grid
                       item
                       key={`title_${game.id}`}
@@ -70,8 +107,26 @@ const Preview = ({ games }) => {
                         {game.attributes.name}
                       </Typography>
                     </Grid>
+                    <Grid
+                      item
+                      key={`desc_${game.id}`}
+                      sx={{ marginBottom: "1rem" }}
+                    >
+                      <Typography variant="body1">
+                        {game.attributes.description.slice(0, 297) + "..."}
+                      </Typography>
+                    </Grid>
                     <Grid item>
-                      <div id="embed-iframe" />
+                      <Iframe
+                        style="border-radius:12px"
+                        src={`https://open.spotify.com/embed/show/${game.attributes.spotifyID}?utm_source=generator`}
+                        width="750"
+                        height="200"
+                        frameBorder="0"
+                        allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                      />
                     </Grid>
                   </Grid>
                 </Grid>

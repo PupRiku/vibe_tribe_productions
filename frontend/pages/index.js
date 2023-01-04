@@ -51,27 +51,29 @@ const Index = ({ games }) => {
           href="http://www.vibetribeproductions.com"
         />
       </Head>
-      <Grid container direction="column" alignItems="center">
-        <Grid item sx={{ marginBottom: "3rem" }}>
-          <Typography variant="h1">
-            Welcome to <Highlight>Vibe Tribe Productions</Highlight>!
-          </Typography>
-        </Grid>
-        <Grid item sx={{ marginBottom: "3rem" }}>
-          <Typography variant="h2">Recent Episodes</Typography>
-        </Grid>
-        <Grid item sx={{ marginBottom: "3rem" }}>
-          <Preview games={games} />
-        </Grid>
-        <Grid item sx={{ marginBottom: "3rem" }}>
-          <Button
-            variant="contained"
-            href="/shows"
-            endIcon={<ArrowForwardIcon />}
-            size="large"
-          >
-            See More Episodes
-          </Button>
+      <Grid item>
+        <Grid container direction="column" alignItems="center">
+          <Grid item sx={{ marginBottom: "3rem" }}>
+            <Typography variant="h1">
+              Welcome to <Highlight>Vibe Tribe Productions</Highlight>!
+            </Typography>
+          </Grid>
+          <Grid item sx={{ marginBottom: "3rem" }}>
+            <Typography variant="h2">Recent Episodes</Typography>
+          </Grid>
+          <Grid item sx={{ marginBottom: "3rem" }}>
+            <Preview games={games} />
+          </Grid>
+          <Grid item sx={{ marginBottom: "3rem" }}>
+            <Button
+              variant="contained"
+              href="/shows"
+              endIcon={<ArrowForwardIcon />}
+              size="large"
+            >
+              See More Episodes
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
