@@ -75,7 +75,7 @@ const Preview = ({ games }) => {
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid item key={`image_${game.id}`}>
+                <Grid item key={`image_${game.id}`} sx={{ marginLeft: "2rem" }}>
                   <img
                     src={getStrapiMedia(game.attributes.image)}
                     style={{ width: "19.5625em", height: "19.5625em" }}
