@@ -18,15 +18,68 @@ const About = ({ games, shows, people }) => {
   const gameMasters = people.filter(
     (person) => person.attributes.gm_of.data.length > 0
   )
+  gameMasters.sort((a, b) => {
+    const nameA = a.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    const nameB = b.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1
+    }
+    if (nameA > nameB) {
+      return 1
+    }
+
+    // names must be equal
+    return 0
+  })
 
   const cast = people.filter(
     (person) =>
       person.attributes.host_of.data.length > 0 ||
       person.attributes.player_in.data.length > 0
   )
+  cast.sort((a, b) => {
+    const nameA = a.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    const nameB = b.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1
+    }
+    if (nameA > nameB) {
+      return 1
+    }
+
+    // names must be equal
+    return 0
+  })
 
   const production = people.filter((person) => person.attributes.production)
+  production.sort((a, b) => {
+    const nameA = a.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    const nameB = b.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1
+    }
+    if (nameA > nameB) {
+      return 1
+    }
+
+    // names must be equal
+    return 0
+  })
+
   const executive = people.filter((person) => person.attributes.executive)
+  executive.sort((a, b) => {
+    const nameA = a.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    const nameB = b.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1
+    }
+    if (nameA > nameB) {
+      return 1
+    }
+
+    // names must be equal
+    return 0
+  })
 
   return (
     <Grid container direction="column">
