@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shows",
+  "info": {
+    "singularName": "show",
+    "pluralName": "shows",
+    "displayName": "Show",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "season1": {
+      "type": "boolean",
+      "required": true
+    },
+    "season2": {
+      "type": "boolean",
+      "required": true
+    },
+    "spotifyID": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}
