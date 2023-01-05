@@ -41,6 +41,12 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "cast": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::person.person",
+      "mappedBy": "host_of"
     }
   }
 }

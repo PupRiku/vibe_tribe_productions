@@ -4,7 +4,8 @@
   "info": {
     "singularName": "game",
     "pluralName": "games",
-    "displayName": "Game"
+    "displayName": "Game",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,12 +18,12 @@
       "unique": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "system": {
       "type": "string",
@@ -44,6 +45,18 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "gameMaster": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::person.person",
+      "inversedBy": "gm_of"
+    },
+    "players": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::person.person",
+      "inversedBy": "player_in"
     }
   }
 }
