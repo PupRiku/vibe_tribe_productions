@@ -4,9 +4,10 @@ import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { styled, useTheme } from "@mui/material/styles"
-
-import theme from "../../src/theme"
 import { fetchAPI } from "../../lib/api"
+import theme from "../../src/theme"
+
+import PersonCard from "../../src/components/PersonCard"
 
 const About = ({ games, shows, people }) => {
   const theme = useTheme()
@@ -19,8 +20,8 @@ const About = ({ games, shows, people }) => {
     (person) => person.attributes.gm_of.data.length > 0
   )
   gameMasters.sort((a, b) => {
-    const nameA = a.attributes.Lastame.toUpperCase() // ignore upper and lowercase
-    const nameB = b.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    const nameA = a.attributes.lastName.toUpperCase() // ignore upper and lowercase
+    const nameB = b.attributes.lastName.toUpperCase() // ignore upper and lowercase
     if (nameA < nameB) {
       return -1
     }
@@ -38,8 +39,8 @@ const About = ({ games, shows, people }) => {
       person.attributes.player_in.data.length > 0
   )
   cast.sort((a, b) => {
-    const nameA = a.attributes.Lastame.toUpperCase() // ignore upper and lowercase
-    const nameB = b.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    const nameA = a.attributes.lastName.toUpperCase() // ignore upper and lowercase
+    const nameB = b.attributes.lastName.toUpperCase() // ignore upper and lowercase
     if (nameA < nameB) {
       return -1
     }
@@ -53,8 +54,8 @@ const About = ({ games, shows, people }) => {
 
   const production = people.filter((person) => person.attributes.production)
   production.sort((a, b) => {
-    const nameA = a.attributes.Lastame.toUpperCase() // ignore upper and lowercase
-    const nameB = b.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    const nameA = a.attributes.lastName.toUpperCase() // ignore upper and lowercase
+    const nameB = b.attributes.lastName.toUpperCase() // ignore upper and lowercase
     if (nameA < nameB) {
       return -1
     }
@@ -68,8 +69,8 @@ const About = ({ games, shows, people }) => {
 
   const executive = people.filter((person) => person.attributes.executive)
   executive.sort((a, b) => {
-    const nameA = a.attributes.Lastame.toUpperCase() // ignore upper and lowercase
-    const nameB = b.attributes.Lastame.toUpperCase() // ignore upper and lowercase
+    const nameA = a.attributes.lastName.toUpperCase() // ignore upper and lowercase
+    const nameB = b.attributes.lastName.toUpperCase() // ignore upper and lowercase
     if (nameA < nameB) {
       return -1
     }
@@ -158,14 +159,42 @@ const About = ({ games, shows, people }) => {
               imperdiet sed euismod nisi.
             </Typography>
           </Grid>
+
           <Grid item sx={{ marginBottom: "3rem" }}>
-            <Typography variant="h2">Game Masters</Typography>
+            <Grid container direction="column" alignItems="center">
+              <Grid item sx={{ marginBottom: "3rem" }}>
+                <Typography variant="h2">Game Masters</Typography>
+              </Grid>
+              <Grid container>
+                {gameMasters.map((person) => (
+                  <PersonCard person={person} section="gm" isAbout />
+                ))}
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item sx={{ marginBottom: "3rem" }}>
-            <Typography variant="h2">Players & Cast</Typography>
+            <Grid container direction="column" alignItems="center">
+              <Grid item sx={{ marginBottom: "3rem" }}>
+                <Typography variant="h2">Players & Cast</Typography>
+              </Grid>
+              <Grid container>
+                {cast.map((person) => (
+                  <PersonCard person={person} section="cast" isAbout />
+                ))}
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item sx={{ marginBottom: "3rem" }}>
-            <Typography variant="h2">Production Team</Typography>
+            <Grid container direction="column" alignItems="center">
+              <Grid item sx={{ marginBottom: "3rem" }}>
+                <Typography variant="h2">Production Team</Typography>
+              </Grid>
+              <Grid container>
+                {production.map((person) => (
+                  <PersonCard person={person} section="production" isAbout />
+                ))}
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
