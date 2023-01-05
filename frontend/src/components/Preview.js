@@ -5,8 +5,9 @@ import Typography from "@mui/material/Typography"
 
 import { getStrapiMedia } from "../../lib/media"
 
-const Preview = ({ games }) => {
-  const gamesSorted = [...games].sort((a, b) => {
+const Preview = ({ games, shows }) => {
+  const allShows = games.concat(shows)
+  const allShowsSorted = [...allShows].sort((a, b) => {
     const nameA = a.attributes.name.toUpperCase() // ignore upper and lowercase
     const nameB = b.attributes.name.toUpperCase() // ignore upper and lowercase
     if (nameA < nameB) {
@@ -20,7 +21,7 @@ const Preview = ({ games }) => {
     return 0
   })
 
-  const currentSeason = gamesSorted.filter((game) => game.attributes.season2)
+  const currentSeason = allShowsSorted.filter((show) => show.attributes.season1)
 
   return (
     <Grid

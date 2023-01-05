@@ -17,7 +17,7 @@ const Highlight = styled("span")(({ theme }) => ({
   color: theme.palette.primary.main,
 }))
 
-const Index = ({ games }) => {
+const Index = ({ games, shows }) => {
   const theme = useTheme()
 
   const matchesMD = useMediaQuery(theme.breakpoints.down("lg"))
@@ -62,7 +62,7 @@ const Index = ({ games }) => {
             <Typography variant="h2">Recent Episodes</Typography>
           </Grid>
           <Grid item sx={{ marginBottom: "3rem" }}>
-            <Preview games={games} />
+            <Preview games={games} shows={shows} />
           </Grid>
           <Grid item sx={{ marginBottom: "3rem" }}>
             <Button
@@ -83,10 +83,12 @@ const Index = ({ games }) => {
 export async function getStaticProps() {
   // Run API calls in parallel
   const [gamesRes] = await Promise.all([fetchAPI("/games", { populate: "*" })])
+  const [showsRes] = await Promise.all([fetchAPI("/shows", { populate: "*" })])
 
   return {
     props: {
       games: gamesRes.data,
+      shows: showsRes.data,
     },
     revalidate: 1,
   }
