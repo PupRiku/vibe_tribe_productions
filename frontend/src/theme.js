@@ -57,7 +57,7 @@ const theme = createTheme({
       fontWeight: 700,
     },
     subtitle1: {
-      color: "#C0C0C0",
+      color: "#707070",
       fontWeight: 300,
       fontStyle: "italic",
     },
