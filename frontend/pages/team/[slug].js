@@ -181,7 +181,7 @@ const Team = ({ games, shows, person }) => {
                 <Typography variant="h2">Games Playing</Typography>
               </Grid>
             ) : null}
-            <Grid container alignItems="center">
+            <Grid container justifyContent="center">
               {person.attributes.player_in.data.length !== 0
                 ? person.attributes.player_in.data.map((game) => {
                     const show = games.find((show) => show.id === game.id)
@@ -202,7 +202,7 @@ const Team = ({ games, shows, person }) => {
                 <Typography variant="h2">Shows Hosting</Typography>
               </Grid>
             ) : null}
-            <Grid container alignItems="center">
+            <Grid container justifyContent="center">
               {person.attributes.host_of.data.length !== 0
                 ? person.attributes.host_of.data.map((show) => {
                     const pod = shows.find((podcast) => podcast.id === show.id)

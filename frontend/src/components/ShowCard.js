@@ -20,10 +20,11 @@ const ShowCard = ({ show, role }) => {
 
   return (
     <Grid item sx={{ margin: "1rem" }}>
-      {role === "gm" ? (
+      {role === "gm" || role === "host" ? (
         <Card
           sx={{
             width: 250,
+            minHeight: 390,
             display: "flex",
             flexDirection: "column",
           }}
