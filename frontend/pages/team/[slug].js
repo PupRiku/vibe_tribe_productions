@@ -8,13 +8,13 @@ import IconButton from "@mui/material/IconButton"
 import { fetchAPI } from "../../lib/api"
 import { getStrapiMedia } from "../../lib/media"
 
+import ShowCard from "../../src/components/ShowCard"
+
 import Twitter from "../../public/assets/Twitter"
 import Instagram from "../../public/assets/Instagram"
 import TikTok from "../../public/assets/TikTok"
 
-const Team = ({ person }) => {
-  const headshotUrl = getStrapiMedia(person.attributes.headshot)
-
+const Team = ({ games, shows, person }) => {
   return (
     <Grid container direction="column">
       <Head>
@@ -52,7 +52,10 @@ const Team = ({ person }) => {
           </Grid>
           <Grid container justifyContent="center">
             <Grid item sx={{ marginBottom: "3rem", marginLeft: "3rem" }}>
-              <img src={headshotUrl} style={{ height: "25rem" }}></img>
+              <img
+                src={getStrapiMedia(person.attributes.headshot)}
+                style={{ height: "25rem" }}
+              ></img>
             </Grid>
             <Grid item sx={{ marginBottom: "3rem", marginLeft: "3rem" }}>
               <Grid container direction="column" sx={{ width: "50rem" }}>
@@ -151,13 +154,69 @@ const Team = ({ person }) => {
           >
             <Typography variant="body1">{person.attributes.bio}</Typography>
           </Grid>
-          {person.attributes.gm_of.data.length > 0 ||
-          person.attributes.player_in.data.length > 0 ||
-          person.attributes.host_of.data.length > 0 ? (
-            <Grid item sx={{ marginBottom: "3rem" }}>
-              <Typography variant="h2">Games</Typography>
+          <Grid container direction="column" alignItems="center">
+            {person.attributes.gm_of.data.length !== 0 ? (
+              <Grid item sx={{ marginBottom: "3rem" }}>
+                <Typography variant="h2">Games Running</Typography>
+              </Grid>
+            ) : null}
+            <Grid container justifyContent="center">
+              {person.attributes.gm_of.data.length !== 0
+                ? person.attributes.gm_of.data.map((game, i) => {
+                    const show = games.find((show) => show.id === game.id)
+                    return (
+                      <ShowCard
+                        show={show}
+                        role="gm"
+                        key={`gameGM_${game.id}`}
+                      />
+                    )
+                  })
+                : null}
             </Grid>
-          ) : null}
+          </Grid>
+          <Grid container direction="column" alignItems="center">
+            {person.attributes.player_in.data.length !== 0 ? (
+              <Grid item sx={{ marginBottom: "3rem" }}>
+                <Typography variant="h2">Games Playing</Typography>
+              </Grid>
+            ) : null}
+            <Grid container alignItems="center">
+              {person.attributes.player_in.data.length !== 0
+                ? person.attributes.player_in.data.map((game) => {
+                    const show = games.find((show) => show.id === game.id)
+                    return (
+                      <ShowCard
+                        show={show}
+                        role="player"
+                        key={`gamePlayer_${game.id}`}
+                      />
+                    )
+                  })
+                : null}
+            </Grid>
+          </Grid>
+          <Grid container direction="column" alignItems="center">
+            {person.attributes.host_of.data.length !== 0 ? (
+              <Grid item sx={{ marginBottom: "3rem" }}>
+                <Typography variant="h2">Shows Hosting</Typography>
+              </Grid>
+            ) : null}
+            <Grid container alignItems="center">
+              {person.attributes.host_of.data.length !== 0
+                ? person.attributes.host_of.data.map((show) => {
+                    const pod = shows.find((podcast) => podcast.id === show.id)
+                    return (
+                      <ShowCard
+                        show={pod}
+                        role="host"
+                        key={`showHost_${show.id}`}
+                      />
+                    )
+                  })
+                : null}
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
@@ -178,6 +237,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const [gamesRes] = await Promise.all([fetchAPI("/games", { populate: "*" })])
+  const [showsRes] = await Promise.all([fetchAPI("/shows", { populate: "*" })])
   const peopleRes = await fetchAPI("/people", {
     filters: {
       slug: params.slug,
@@ -186,7 +247,11 @@ export async function getStaticProps({ params }) {
   })
 
   return {
-    props: { person: peopleRes.data[0] },
+    props: {
+      games: gamesRes.data,
+      shows: showsRes.data,
+      person: peopleRes.data[0],
+    },
     revalidate: 1,
   }
 }
