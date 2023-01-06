@@ -85,7 +85,12 @@ const PersonCard = ({ person, section, isAbout }) => {
             </Grid>
           </CardContent>
           <CardActions sx={{ justifyContent: "flex-end", marginTop: "auto" }}>
-            <Button endIcon={<ArrowForwardIcon />}>Bio</Button>
+            <Button
+              href={`/team/${person.attributes.slug}`}
+              endIcon={<ArrowForwardIcon />}
+            >
+              Bio
+            </Button>
           </CardActions>
         </Card>
       ) : null}
