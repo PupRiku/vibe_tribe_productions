@@ -81,6 +81,12 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "characters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::character.character",
+      "mappedBy": "player"
     }
   }
 }

@@ -64,6 +64,12 @@
     },
     "text": {
       "type": "string"
+    },
+    "characters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::character.character",
+      "mappedBy": "game"
     }
   }
 }
