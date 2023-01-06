@@ -155,33 +155,16 @@ const Team = ({ games, shows, person }) => {
             <Typography variant="body1">{person.attributes.bio}</Typography>
           </Grid>
           <Grid container direction="column" alignItems="center">
-            {person.attributes.gm_of.data.length !== 0 ? (
-              <Grid item sx={{ marginBottom: "3rem" }}>
-                <Typography variant="h2">Games Running</Typography>
-              </Grid>
-            ) : null}
-            <Grid container justifyContent="center">
-              {person.attributes.gm_of.data.length !== 0
-                ? person.attributes.gm_of.data.map((game, i) => {
-                    const show = games.find((show) => show.id === game.id)
-                    return (
-                      <ShowCard
-                        show={show}
-                        role="gm"
-                        key={`gameGM_${game.id}`}
-                      />
-                    )
-                  })
-                : null}
-            </Grid>
-          </Grid>
-          <Grid container direction="column" alignItems="center">
             {person.attributes.player_in.data.length !== 0 ? (
               <Grid item sx={{ marginBottom: "3rem" }}>
-                <Typography variant="h2">Games Playing</Typography>
+                <Typography variant="h2">Player Characters</Typography>
               </Grid>
             ) : null}
-            <Grid container justifyContent="center">
+            <Grid
+              container
+              justifyContent="center"
+              sx={{ marginBottom: "2rem" }}
+            >
               {person.attributes.player_in.data.length !== 0
                 ? person.attributes.player_in.data.map((game) => {
                     const show = games.find((show) => show.id === game.id)
@@ -197,6 +180,36 @@ const Team = ({ games, shows, person }) => {
             </Grid>
           </Grid>
           <Grid container direction="column" alignItems="center">
+            {person.attributes.gm_of.data.length !== 0 ? (
+              <Grid item sx={{ marginBottom: "3rem" }}>
+                <Typography variant="h2">Games Running</Typography>
+              </Grid>
+            ) : null}
+            <Grid
+              container
+              justifyContent="center"
+              sx={{ marginBottom: "2rem" }}
+            >
+              {person.attributes.gm_of.data.length !== 0
+                ? person.attributes.gm_of.data.map((game, i) => {
+                    const show = games.find((show) => show.id === game.id)
+                    return (
+                      <ShowCard
+                        show={show}
+                        role="gm"
+                        key={`gameGM_${game.id}`}
+                      />
+                    )
+                  })
+                : null}
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            sx={{ marginBottom: "2rem" }}
+          >
             {person.attributes.host_of.data.length !== 0 ? (
               <Grid item sx={{ marginBottom: "3rem" }}>
                 <Typography variant="h2">Shows Hosting</Typography>
