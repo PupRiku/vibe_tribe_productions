@@ -151,9 +151,13 @@ const Team = ({ person }) => {
           >
             <Typography variant="body1">{person.attributes.bio}</Typography>
           </Grid>
-          <Grid item sx={{ marginBottom: "3rem" }}>
-            <Typography variant="h2">Games</Typography>
-          </Grid>
+          {person.attributes.gm_of.data.length > 0 ||
+          person.attributes.player_in.data.length > 0 ||
+          person.attributes.host_of.data.length > 0 ? (
+            <Grid item sx={{ marginBottom: "3rem" }}>
+              <Typography variant="h2">Games</Typography>
+            </Grid>
+          ) : null}
         </Grid>
       </Grid>
     </Grid>
