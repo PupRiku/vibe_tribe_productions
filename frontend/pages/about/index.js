@@ -165,7 +165,7 @@ const About = ({ games, shows, people }) => {
               <Grid item sx={{ marginBottom: "3rem" }}>
                 <Typography variant="h2">Game Masters</Typography>
               </Grid>
-              <Grid container>
+              <Grid container justifyContent="center">
                 {gameMasters.map((person) => (
                   <PersonCard person={person} section="gm" isAbout />
                 ))}
@@ -177,7 +177,7 @@ const About = ({ games, shows, people }) => {
               <Grid item sx={{ marginBottom: "3rem" }}>
                 <Typography variant="h2">Players & Cast</Typography>
               </Grid>
-              <Grid container>
+              <Grid container justifyContent="center">
                 {cast.map((person) => (
                   <PersonCard person={person} section="cast" isAbout />
                 ))}
@@ -185,11 +185,11 @@ const About = ({ games, shows, people }) => {
             </Grid>
           </Grid>
           <Grid item sx={{ marginBottom: "3rem" }}>
-            <Grid container direction="column" alignItems="center">
+            <Grid container direction="column">
               <Grid item sx={{ marginBottom: "3rem" }}>
                 <Typography variant="h2">Production Team</Typography>
               </Grid>
-              <Grid container>
+              <Grid container justifyContent="center">
                 {production.map((person) => (
                   <PersonCard person={person} section="production" isAbout />
                 ))}

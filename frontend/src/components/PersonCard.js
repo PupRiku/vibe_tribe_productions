@@ -9,10 +9,14 @@ import Button from "@mui/material/Button"
 import Chip from "@mui/material/Chip"
 
 import { getStrapiMedia } from "../../lib/media"
+import { styled, useTheme } from "@mui/material/styles"
+import theme from "../../src/theme"
 
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
 
 const PersonCard = ({ person, section, isAbout }) => {
+  const theme = useTheme()
+
   const allShows = person.attributes.player_in.data.concat(
     person.attributes.host_of.data
   )
@@ -22,8 +26,8 @@ const PersonCard = ({ person, section, isAbout }) => {
       {isAbout ? (
         <Card
           sx={{
-            width: 350,
-            minHeight: 510,
+            width: 370,
+            minHeight: section === "production" ? 400 : 550,
             display: "flex",
             flexDirection: "column",
           }}
@@ -43,7 +47,12 @@ const PersonCard = ({ person, section, isAbout }) => {
                   return (
                     <Chip
                       label={game.attributes.name}
-                      sx={{ margin: "0.5rem" }}
+                      sx={{
+                        margin: "0.5rem",
+                        color: game.attributes.text,
+                        backgroundColor: game.attributes.color,
+                      }}
+                      key={`game_${game.id}`}
                     />
                   )
                 })
@@ -52,7 +61,12 @@ const PersonCard = ({ person, section, isAbout }) => {
                   return (
                     <Chip
                       label={show.attributes.name}
-                      sx={{ margin: "0.5rem" }}
+                      sx={{
+                        margin: "0.5rem",
+                        color: show.attributes.text,
+                        backgroundColor: show.attributes.color,
+                      }}
+                      key={`show_${show.id}`}
                     />
                   )
                 })
