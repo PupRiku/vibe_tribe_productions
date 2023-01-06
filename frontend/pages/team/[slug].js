@@ -55,7 +55,7 @@ const Team = ({ person }) => {
               <img src={headshotUrl} style={{ height: "25rem" }}></img>
             </Grid>
             <Grid item sx={{ marginBottom: "3rem", marginLeft: "3rem" }}>
-              <Grid container direction="column">
+              <Grid container direction="column" sx={{ width: "50rem" }}>
                 <Grid item>
                   <Typography variant="h2">{person.attributes.role}</Typography>
                 </Grid>
