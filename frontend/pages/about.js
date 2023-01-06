@@ -4,10 +4,10 @@ import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { styled, useTheme } from "@mui/material/styles"
-import { fetchAPI } from "../../lib/api"
-import theme from "../../src/theme"
+import { fetchAPI } from "../lib/api"
+import theme from "../src/theme"
 
-import PersonCard from "../../src/components/PersonCard"
+import PersonCard from "../src/components/PersonCard"
 
 const About = ({ games, shows, people }) => {
   const theme = useTheme()
