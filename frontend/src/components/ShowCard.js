@@ -14,35 +14,33 @@ import theme from "../../src/theme"
 
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
 
-const ShowCard = ({ show, role }) => {
+const ShowCard = ({ show }) => {
   const theme = useTheme()
 
   return (
     <Grid item sx={{ margin: "1rem" }}>
-      {role === "gm" || role === "host" ? (
-        <Card
-          sx={{
-            width: 250,
-            minHeight: 390,
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <CardMedia
-            sx={{ height: 250 }}
-            image={getStrapiMedia(show.attributes.image)}
-            title={`${show.attributes.name} cover image`}
-          />
-          <CardContent>
-            <Typography variant="h3" component="div">
-              {`${show.attributes.name}`}
-            </Typography>
-          </CardContent>
-          <CardActions sx={{ justifyContent: "flex-end", marginTop: "auto" }}>
-            <Button endIcon={<ArrowForwardIcon />}>Learn More</Button>
-          </CardActions>
-        </Card>
-      ) : null}
+      <Card
+        sx={{
+          width: 250,
+          minHeight: 390,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <CardMedia
+          sx={{ height: 250 }}
+          image={getStrapiMedia(show.attributes.image)}
+          title={`${show.attributes.name} cover image`}
+        />
+        <CardContent>
+          <Typography variant="h3" component="div">
+            {`${show.attributes.name}`}
+          </Typography>
+        </CardContent>
+        <CardActions sx={{ justifyContent: "flex-end", marginTop: "auto" }}>
+          <Button endIcon={<ArrowForwardIcon />}>Learn More</Button>
+        </CardActions>
+      </Card>
     </Grid>
   )
 }
