@@ -9,12 +9,17 @@ import { fetchAPI } from "../../lib/api"
 import { getStrapiMedia } from "../../lib/media"
 
 import ShowCard from "../../src/components/ShowCard"
+import CharacterCard from "../../src/components/CharacterCard"
 
 import Twitter from "../../public/assets/Twitter"
 import Instagram from "../../public/assets/Instagram"
 import TikTok from "../../public/assets/TikTok"
 
-const Team = ({ games, shows, person }) => {
+const Team = ({ games, shows, characters, person }) => {
+  const myPCs = characters.filter(
+    (character) => character.attributes.player.data.id === person.id
+  )
+
   return (
     <Grid container direction="column">
       <Head>
@@ -166,13 +171,15 @@ const Team = ({ games, shows, person }) => {
               sx={{ marginBottom: "2rem" }}
             >
               {person.attributes.player_in.data.length !== 0
-                ? person.attributes.player_in.data.map((game) => {
-                    const show = games.find((show) => show.id === game.id)
+                ? myPCs.map((pc) => {
+                    const char = characters.find(
+                      (character) => character.id === pc.id
+                    )
                     return (
-                      <ShowCard
-                        show={show}
+                      <CharacterCard
+                        character={char}
                         role="player"
-                        key={`gamePlayer_${game.id}`}
+                        key={`gamePlayer_${pc.id}`}
                       />
                     )
                   })
@@ -191,7 +198,7 @@ const Team = ({ games, shows, person }) => {
               sx={{ marginBottom: "2rem" }}
             >
               {person.attributes.gm_of.data.length !== 0
-                ? person.attributes.gm_of.data.map((game, i) => {
+                ? person.attributes.gm_of.data.map((game) => {
                     const show = games.find((show) => show.id === game.id)
                     return (
                       <ShowCard
@@ -252,6 +259,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const [gamesRes] = await Promise.all([fetchAPI("/games", { populate: "*" })])
   const [showsRes] = await Promise.all([fetchAPI("/shows", { populate: "*" })])
+  const [charactersRes] = await Promise.all([
+    fetchAPI("/characters", { populate: "*" }),
+  ])
   const peopleRes = await fetchAPI("/people", {
     filters: {
       slug: params.slug,
@@ -263,6 +273,7 @@ export async function getStaticProps({ params }) {
     props: {
       games: gamesRes.data,
       shows: showsRes.data,
+      characters: charactersRes.data,
       person: peopleRes.data[0],
     },
     revalidate: 1,
