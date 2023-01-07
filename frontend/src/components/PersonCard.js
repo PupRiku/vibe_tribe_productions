@@ -26,14 +26,14 @@ const PersonCard = ({ person, section, isAbout }) => {
       {isAbout ? (
         <Card
           sx={{
-            width: 370,
-            minHeight: section === "production" ? 400 : 550,
+            width: 400,
+            minHeight: section === "production" ? 400 : 710,
             display: "flex",
             flexDirection: "column",
           }}
         >
           <CardMedia
-            sx={{ height: 250 }}
+            sx={{ height: 400 }}
             image={getStrapiMedia(person.attributes.headshot)}
             title={`${person.attributes.lastName} headshot`}
           />
