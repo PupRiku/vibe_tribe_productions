@@ -64,7 +64,7 @@ const CharacterCard = ({ character }) => {
             ) : null}
 
             <Grid item>
-              <Button endIcon={<ArrowForwardIcon />}>Game Info</Button>
+              <Button endIcon={<ArrowForwardIcon />}>More Info</Button>
             </Grid>
           </Grid>
         </CardActions>
