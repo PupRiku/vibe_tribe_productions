@@ -16,7 +16,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
 
 const ShowCard = ({ show, role }) => {
   const theme = useTheme()
-  console.log(show)
 
   return (
     <Grid item sx={{ margin: "1rem" }}>
