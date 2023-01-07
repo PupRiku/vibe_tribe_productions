@@ -32,10 +32,6 @@
       "type": "string",
       "required": true
     },
-    "age": {
-      "type": "integer",
-      "required": true
-    },
     "twitter": {
       "type": "string"
     },
