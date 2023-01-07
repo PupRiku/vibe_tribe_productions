@@ -26,7 +26,7 @@ const CharacterCard = ({ character }) => {
       <Card
         sx={{
           width: 250,
-          minHeight: 400,
+          minHeight: 425,
           display: "flex",
           flexDirection: "column",
         }}
@@ -77,7 +77,10 @@ const CharacterCard = ({ character }) => {
           >
             <Grid container>
               <Grid item>
-                <img src={getStrapiMedia(character.attributes.image)} />
+                <img
+                  src={getStrapiMedia(character.attributes.image)}
+                  style={{ height: 225, width: 225 }}
+                />
               </Grid>
               <Grid item>
                 <Grid
