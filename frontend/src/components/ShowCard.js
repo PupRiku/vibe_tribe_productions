@@ -14,7 +14,7 @@ import theme from "../../src/theme"
 
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
 
-const ShowCard = ({ show, isMain }) => {
+const ShowCard = ({ show }) => {
   const theme = useTheme()
 
   return (
