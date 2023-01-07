@@ -46,9 +46,23 @@ const CharacterCard = ({ character }) => {
           }}
         >
           <Grid container direction="column" alignItems="flex-end">
-            <Grid item>
-              <Button endIcon={<ArrowForwardIcon />}>Character Sheet</Button>
-            </Grid>
+            {character.attributes.sheet_file ||
+            character.attributes.sheet_link ? (
+              <Grid item>
+                <Button
+                  href={
+                    character.attributes.sheet_link
+                      ? character.attributes.sheet_link
+                      : getStrapiMedia(character.attributes.sheet_file)
+                  }
+                  endIcon={<ArrowForwardIcon />}
+                  target="_blank"
+                >
+                  Character Sheet
+                </Button>
+              </Grid>
+            ) : null}
+
             <Grid item>
               <Button endIcon={<ArrowForwardIcon />}>Game Info</Button>
             </Grid>
