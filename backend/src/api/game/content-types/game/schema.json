@@ -70,6 +70,11 @@
       "relation": "oneToMany",
       "target": "api::character.character",
       "mappedBy": "game"
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }
