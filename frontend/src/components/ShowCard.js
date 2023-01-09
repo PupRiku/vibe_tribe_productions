@@ -39,7 +39,11 @@ const ShowCard = ({ show }) => {
         </CardContent>
         <CardActions sx={{ justifyContent: "flex-end", marginTop: "auto" }}>
           <Button
-            href={`/games/${show.attributes.slug}`}
+            href={
+              show.attributes.system
+                ? `/games/${show.attributes.slug}`
+                : `/podcasts/${show.attributes.slug}`
+            }
             endIcon={<ArrowForwardIcon />}
           >
             Learn More
