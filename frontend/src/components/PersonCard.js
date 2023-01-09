@@ -86,7 +86,7 @@ const PersonCard = ({ person, section, isAbout }) => {
           </CardContent>
           <CardActions sx={{ justifyContent: "flex-end", marginTop: "auto" }}>
             <Button
-              href={`/team/${person.attributes.slug}`}
+              href={`/about/${person.attributes.slug}`}
               endIcon={<ArrowForwardIcon />}
             >
               Bio
