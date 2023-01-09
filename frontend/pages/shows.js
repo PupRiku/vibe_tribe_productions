@@ -87,7 +87,10 @@ const Shows = ({ games, shows }) => {
           <Grid item sx={{ marginBottom: "3rem" }}>
             <Grid container justifyContent="center">
               {season2.map((show) => (
-                <ShowCard show={show} />
+                <ShowCard
+                  show={show}
+                  key={`season1_showCard_${show.attributes.name}`}
+                />
               ))}
             </Grid>
           </Grid>
@@ -97,7 +100,10 @@ const Shows = ({ games, shows }) => {
           <Grid item sx={{ marginBottom: "3rem" }}>
             <Grid container justifyContent="center">
               {season1.map((show) => (
-                <ShowCard show={show} isMain />
+                <ShowCard
+                  show={show}
+                  key={`season2_showCard_${show.attributes.name}`}
+                />
               ))}
             </Grid>
           </Grid>
