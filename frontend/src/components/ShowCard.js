@@ -38,7 +38,12 @@ const ShowCard = ({ show }) => {
           </Typography>
         </CardContent>
         <CardActions sx={{ justifyContent: "flex-end", marginTop: "auto" }}>
-          <Button endIcon={<ArrowForwardIcon />}>Learn More</Button>
+          <Button
+            href={`/games/${show.attributes.slug}`}
+            endIcon={<ArrowForwardIcon />}
+          >
+            Learn More
+          </Button>
         </CardActions>
       </Card>
     </Grid>
