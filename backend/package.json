@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "strapi-api",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -9,18 +9,19 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.3.8",
-    "@strapi/plugin-users-permissions": "4.3.8",
     "@strapi/plugin-i18n": "4.3.8",
-    "better-sqlite3": "7.4.6"
+    "@strapi/plugin-users-permissions": "4.3.8",
+    "@strapi/strapi": "4.3.8",
+    "@strapi/utils": "^4.5.5",
+    "pg": "8.6.0",
+    "strapi-plugin-import-export-entries": "^1.18.0"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "b2a3844c-2132-4a0d-953d-ae25f3d3d4cf"
+    "uuid": "f3ec5798-518d-4184-aea1-d07b9eac7bc3"
   },
   "engines": {
     "node": ">=14.19.1 <=16.x.x",
