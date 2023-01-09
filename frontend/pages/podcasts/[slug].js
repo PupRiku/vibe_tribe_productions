@@ -16,8 +16,6 @@ import { fetchAPI } from "../../lib/api"
 import { getStrapiMedia } from "../../lib/media"
 
 const Podcast = ({ games, show, characters, people }) => {
-  console.log(show)
-
   let hosts = []
 
   show.attributes.cast.data.forEach((host) => {
