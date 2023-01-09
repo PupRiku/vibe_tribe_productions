@@ -20,9 +20,6 @@ const PlayerCard = ({ person, character }) => {
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  console.log(person)
-  console.log(character)
-
   return (
     <Grid item sx={{ margin: "1rem" }}>
       <Card
