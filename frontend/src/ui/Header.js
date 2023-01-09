@@ -76,7 +76,11 @@ export default function Header({ value, setValue }) {
     { name: "Home", link: "/", activeIndex: 0 },
     { name: "About", link: "/about", activeIndex: 1 },
     { name: "Shows", link: "/shows", activeIndex: 2 },
-    { name: "Merch", link: "/merch", activeIndex: 3 },
+    {
+      name: "Merch",
+      link: "https://www.vibetribeproductions.shop/",
+      activeIndex: 3,
+    },
   ]
 
   const path = typeof window !== "undefined" ? window.location.pathname : null

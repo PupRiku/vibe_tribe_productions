@@ -217,7 +217,7 @@ export default function Footer({ value, setValue }) {
               <StyledLink
                 item
                 component={"a"}
-                href="/merch"
+                href="https://www.vibetribeproductions.shop/"
                 onClick={() => setValue(3)}
               >
                 Store
