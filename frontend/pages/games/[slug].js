@@ -8,20 +8,29 @@ import CardActions from "@mui/material/CardActions"
 import CardContent from "@mui/material/CardContent"
 import CardMedia from "@mui/material/CardMedia"
 
-import PersonCard from "../../src/components/PersonCard"
+import GMCard from "../../src/components/GMCard"
+import PlayerCard from "../../src/components/PlayerCard"
 
 import { fetchAPI } from "../../lib/api"
 import { getStrapiMedia } from "../../lib/media"
-import GMCard from "../../src/components/GMCard"
 
 const Game = ({ game, shows, characters, people }) => {
+  let players = []
+  let pcs = []
+
   const gameMaster = people.filter(
     (person) => person.id === game.attributes.gameMaster.data.id
   )
 
-  // const players = people.filter((person) =>
-  //   person.attributes.player_in.data.find((item) => item.id === game.id)
-  // )
+  game.attributes.players.data.forEach((player) => {
+    const filtered = people.filter((person) => player.id === person.id)
+    players.push(filtered.pop())
+  })
+
+  game.attributes.characters.data.forEach((pc) => {
+    const filtered = characters.filter((char) => pc.id === char.id)
+    pcs.push(filtered.pop())
+  })
 
   return (
     <Grid container direction="column">
@@ -73,7 +82,9 @@ const Game = ({ game, shows, characters, people }) => {
                     <Chip
                       label={"Season 1"}
                       sx={{
-                        margin: "0.5rem",
+                        padding: 0,
+                        marginRight: "0.5rem",
+                        marginBottom: "0.5rem",
                         color: "#ffffff",
                         backgroundColor: "green",
                       }}
@@ -83,7 +94,9 @@ const Game = ({ game, shows, characters, people }) => {
                     <Chip
                       label={"Season 2"}
                       sx={{
-                        margin: "0.5rem",
+                        padding: 0,
+                        marginRight: "0.5rem",
+                        marginBottom: "0.5rem",
                         color: "#000000",
                         backgroundColor: "#ffff00",
                       }}
@@ -113,6 +126,18 @@ const Game = ({ game, shows, characters, people }) => {
           <Grid container direction="column" alignItems="center">
             <Grid item sx={{ marginBottom: "3rem" }}>
               <Typography variant="h2">Players</Typography>
+            </Grid>
+            <Grid container justifyContent="center">
+              {players.map((player) => {
+                const pc = pcs.filter(
+                  (char) => char.attributes.player.data.id === player.id
+                )
+                return (
+                  <Grid item key={`char_${player.id}`}>
+                    <PlayerCard person={player} character={pc[0]} />
+                  </Grid>
+                )
+              })}
             </Grid>
           </Grid>
         </Grid>
