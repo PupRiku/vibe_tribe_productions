@@ -256,7 +256,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps({ params }) {
   const [gamesRes] = await Promise.all([fetchAPI("/games", { populate: "*" })])
   const [showsRes] = await Promise.all([fetchAPI("/shows", { populate: "*" })])
   const [charactersRes] = await Promise.all([
