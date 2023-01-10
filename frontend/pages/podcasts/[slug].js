@@ -132,7 +132,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const [peopleRes] = await Promise.all([
     fetchAPI("/people", { populate: "*" }),
   ])
