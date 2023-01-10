@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Image from "next/image"
 import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
 import Card from "@mui/material/Card"
@@ -77,8 +78,9 @@ const PlayerCard = ({ person, character }) => {
           >
             <Grid container>
               <Grid item>
-                <img
+                <Image
                   src={getStrapiMedia(character.attributes.image)}
+                  alt={`${character.attributes.name} art`}
                   style={{ height: 225, width: 225 }}
                 />
               </Grid>

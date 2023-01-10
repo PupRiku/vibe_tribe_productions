@@ -1,5 +1,6 @@
 import React from "react"
 import Head from "next/head"
+import Image from "next/image"
 import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
 import Chip from "@mui/material/Chip"
@@ -67,10 +68,11 @@ const Game = ({ game, shows, characters, people }) => {
           </Grid>
           <Grid container justifyContent="center">
             <Grid item sx={{ marginBottom: "3rem", marginLeft: "3rem" }}>
-              <img
+              <Image
                 src={getStrapiMedia(game.attributes.image)}
+                alt={`${game.attributes.name} logo`}
                 style={{ height: "25rem" }}
-              ></img>
+              ></Image>
             </Grid>
             <Grid item sx={{ marginBottom: "3rem", marginLeft: "3rem" }}>
               <Grid container direction="column" sx={{ width: "50rem" }}>
@@ -155,7 +157,7 @@ export async function getStaticPaths() {
         slug: game.attributes.slug,
       },
     })),
-    fallback: "blocking",
+    fallback: false,
   }
 }
 

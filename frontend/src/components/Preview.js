@@ -1,5 +1,6 @@
 import React from "react"
 import Iframe from "react-iframe"
+import Image from "next/image"
 import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
 
@@ -45,8 +46,9 @@ const Preview = ({ games, shows }) => {
                 justifyContent="center"
               >
                 <Grid item key={`image_${game.id}`}>
-                  <img
+                  <Image
                     src={getStrapiMedia(game.attributes.image)}
+                    alt={`${game.attributes.name} cover`}
                     style={{ width: "19.5625em", height: "19.5625em" }}
                   />
                 </Grid>
@@ -134,8 +136,9 @@ const Preview = ({ games, shows }) => {
                   </Grid>
                 </Grid>
                 <Grid item key={`image_${game.id}`} sx={{ marginLeft: "2rem" }}>
-                  <img
+                  <Image
                     src={getStrapiMedia(game.attributes.image)}
+                    alt={`${game.attributes.name} cover`}
                     style={{ width: "19.5625em", height: "19.5625em" }}
                   />
                 </Grid>
