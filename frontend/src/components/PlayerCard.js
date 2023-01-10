@@ -55,7 +55,7 @@ const PlayerCard = ({ person, character }) => {
               Bio
             </Button>
             <Button onClick={handleOpen} endIcon={<ArrowForwardIcon />}>
-              Character Sheet
+              Character Info
             </Button>
           </Grid>
         </CardActions>
@@ -140,7 +140,7 @@ const PlayerCard = ({ person, character }) => {
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid item>
+                  {/* <Grid item>
                     <Grid container direction="column">
                       <Grid item>
                         {character.attributes.sheet_link ||
@@ -167,7 +167,7 @@ const PlayerCard = ({ person, character }) => {
                         ) : null}
                       </Grid>
                     </Grid>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Grid>
             </Grid>

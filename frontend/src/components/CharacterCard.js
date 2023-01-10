@@ -140,7 +140,7 @@ const CharacterCard = ({ character }) => {
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid item>
+                  {/* <Grid item>
                     <Grid container direction="column">
                       <Grid item>
                         <Button
@@ -162,7 +162,7 @@ const CharacterCard = ({ character }) => {
                         </Button>
                       </Grid>
                     </Grid>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Grid>
             </Grid>
