@@ -252,7 +252,7 @@ export async function getStaticPaths() {
         slug: person.attributes.slug,
       },
     })),
-    fallback: false,
+    fallback: "blocking",
   }
 }
 

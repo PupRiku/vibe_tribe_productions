@@ -128,7 +128,7 @@ export async function getStaticPaths() {
         slug: show.attributes.slug,
       },
     })),
-    fallback: false,
+    fallback: "blocking",
   }
 }
 

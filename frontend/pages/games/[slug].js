@@ -155,7 +155,7 @@ export async function getStaticPaths() {
         slug: game.attributes.slug,
       },
     })),
-    fallback: false,
+    fallback: "blocking",
   }
 }
 
