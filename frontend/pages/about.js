@@ -167,7 +167,12 @@ const About = ({ games, shows, people }) => {
               </Grid>
               <Grid container justifyContent="center">
                 {gameMasters.map((person) => (
-                  <PersonCard person={person} section="gm" isAbout />
+                  <PersonCard
+                    person={person}
+                    section="gm"
+                    isAbout
+                    key={`gm_${person.id}`}
+                  />
                 ))}
               </Grid>
             </Grid>
@@ -179,7 +184,12 @@ const About = ({ games, shows, people }) => {
               </Grid>
               <Grid container justifyContent="center">
                 {cast.map((person) => (
-                  <PersonCard person={person} section="cast" isAbout />
+                  <PersonCard
+                    person={person}
+                    section="cast"
+                    isAbout
+                    key={`cast_${person.id}`}
+                  />
                 ))}
               </Grid>
             </Grid>
@@ -191,7 +201,12 @@ const About = ({ games, shows, people }) => {
               </Grid>
               <Grid container justifyContent="center">
                 {production.map((person) => (
-                  <PersonCard person={person} section="production" isAbout />
+                  <PersonCard
+                    person={person}
+                    section="production"
+                    isAbout
+                    key={`prod_${person.id}`}
+                  />
                 ))}
               </Grid>
             </Grid>
