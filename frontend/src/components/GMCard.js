@@ -8,14 +8,10 @@ import CardMedia from "@mui/material/CardMedia"
 import Button from "@mui/material/Button"
 
 import { getStrapiMedia } from "../../lib/media"
-import { styled, useTheme } from "@mui/material/styles"
-import theme from "../../src/theme"
 
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
 
 const GMCard = ({ person }) => {
-  const theme = useTheme()
-
   return (
     <Grid item sx={{ margin: "1rem" }}>
       <Card

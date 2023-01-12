@@ -1,13 +1,8 @@
 import React from "react"
-import Head from "next/head"
 import Image from "next/image"
 import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
 import Chip from "@mui/material/Chip"
-import Card from "@mui/material/Card"
-import CardActions from "@mui/material/CardActions"
-import CardContent from "@mui/material/CardContent"
-import CardMedia from "@mui/material/CardMedia"
 
 import GMCard from "../../src/components/GMCard"
 import PlayerCard from "../../src/components/PlayerCard"
@@ -15,7 +10,7 @@ import PlayerCard from "../../src/components/PlayerCard"
 import { fetchAPI } from "../../lib/api"
 import { getStrapiMedia } from "../../lib/media"
 
-const Game = ({ game, shows, characters, people }) => {
+const Game = ({ game, characters, people }) => {
   let players = []
   let pcs = []
 
@@ -35,29 +30,6 @@ const Game = ({ game, shows, characters, people }) => {
 
   return (
     <Grid container direction="column">
-      <Head>
-        <title key="title">{`Our Games and Shows - ${game.attributes.name}`}</title>
-        <meta
-          name="description"
-          key="description"
-          content="Learn more about the Vibe Tribe Productions shows!"
-        />
-        <meta
-          property="og:title"
-          content={`About Us - ${game.attributes.name}`}
-          key="og:title"
-        />
-        <meta
-          property="og:url"
-          key="og:url"
-          content={`http://www.vibetribeproductions.com/team/${game.attributes.name}`}
-        />
-        <link
-          rel="canonical"
-          key="canonical"
-          href={`http://www.vibetribeproductions.com/team/${game.attributes.name}`}
-        />
-      </Head>
       <Grid item>
         <Grid container direction="column" alignItems="center">
           <Grid item sx={{ marginBottom: "3rem" }}>
@@ -165,7 +137,6 @@ export async function getStaticProps({ params }) {
   const [peopleRes] = await Promise.all([
     fetchAPI("/people", { populate: "*" }),
   ])
-  const [showsRes] = await Promise.all([fetchAPI("/shows", { populate: "*" })])
   const [charactersRes] = await Promise.all([
     fetchAPI("/characters", { populate: "*" }),
   ])
@@ -178,10 +149,9 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      people: peopleRes.data,
-      shows: showsRes.data,
-      characters: charactersRes.data,
       game: gamesRes.data[0],
+      characters: charactersRes.data,
+      people: peopleRes.data,
     },
     revalidate: 1,
   }

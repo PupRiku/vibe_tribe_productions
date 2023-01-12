@@ -10,13 +10,10 @@ import Button from "@mui/material/Button"
 import Modal from "@mui/material/Modal"
 
 import { getStrapiMedia } from "../../lib/media"
-import { styled, useTheme } from "@mui/material/styles"
-import theme from "../../src/theme"
 
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
 
 const PlayerCard = ({ person, character }) => {
-  const theme = useTheme()
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -140,34 +137,6 @@ const PlayerCard = ({ person, character }) => {
                       </Grid>
                     </Grid>
                   </Grid>
-                  {/* <Grid item>
-                    <Grid container direction="column">
-                      <Grid item>
-                        {character.attributes.sheet_link ||
-                        character.attributes.sheet_file.data ? (
-                          <Button
-                            href={
-                              character.attributes.sheet_link
-                                ? character.attributes.sheet_link
-                                : getStrapiMedia(
-                                    character.attributes.sheet_file
-                                  )
-                            }
-                            target="_blank"
-                            size="large"
-                            endIcon={<ArrowForwardIcon />}
-                            sx={{
-                              textTransform: "none",
-                              padding: 0,
-                              fontSize: "1.5em",
-                            }}
-                          >
-                            Character Sheet
-                          </Button>
-                        ) : null}
-                      </Grid>
-                    </Grid>
-                  </Grid> */}
                 </Grid>
               </Grid>
             </Grid>
