@@ -103,17 +103,17 @@ const Game = ({ game, characters, people }) => {
               <Typography variant="h2">Players</Typography>
             </Grid>
             <Grid container justifyContent="center">
-              {pcs.map((pc) => {
-                players.forEach((player) => {
-                  if (player.id === pc.attributes.player.data.id) {
-                    return (
-                      <Grid item key={`char_${player.id}`}>
-                        <PlayerCard person={player} character={pc} />
-                      </Grid>
-                    )
-                  }
-                  return null
+              {players.map((player) => {
+                let pc = []
+                pcs.forEach((char) => {
+                  if (char.attributes.player.data.id === player.id)
+                    pc.push(char)
                 })
+                return (
+                  <Grid item key={`char_${player.id}`}>
+                    <PlayerCard person={player} character={pc[0]} />
+                  </Grid>
+                )
               })}
             </Grid>
           </Grid>
