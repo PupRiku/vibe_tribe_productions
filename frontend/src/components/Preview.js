@@ -49,7 +49,8 @@ const Preview = ({ games, shows }) => {
                   <Image
                     src={getStrapiMedia(game.attributes.image)}
                     alt={`${game.attributes.name} cover`}
-                    style={{ width: "19.5625em", height: "19.5625em" }}
+                    width={313}
+                    height={313}
                   />
                 </Grid>
                 <Grid item sx={{ marginLeft: "2rem" }}>
@@ -139,7 +140,8 @@ const Preview = ({ games, shows }) => {
                   <Image
                     src={getStrapiMedia(game.attributes.image)}
                     alt={`${game.attributes.name} cover`}
-                    style={{ width: "19.5625em", height: "19.5625em" }}
+                    width={313}
+                    height={313}
                   />
                 </Grid>
               </Grid>

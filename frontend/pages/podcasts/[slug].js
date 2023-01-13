@@ -62,7 +62,8 @@ const Podcast = ({ games, show, characters, people }) => {
               <Image
                 src={getStrapiMedia(show.attributes.image)}
                 alt={`${show.attributes.name} logo`}
-                style={{ height: "25rem" }}
+                height={400}
+                width={400}
               ></Image>
             </Grid>
             <Grid item sx={{ marginBottom: "3rem", marginLeft: "3rem" }}>

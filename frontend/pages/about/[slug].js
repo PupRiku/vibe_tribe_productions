@@ -61,7 +61,8 @@ const Team = ({ games, shows, characters, person }) => {
               <Image
                 src={getStrapiMedia(person.attributes.headshot)}
                 alt={`${person.attributes.firstName} ${person.attributes.firstName} headshot`}
-                style={{ height: "25rem" }}
+                height={400}
+                width={400}
               ></Image>
             </Grid>
             <Grid item sx={{ marginBottom: "3rem", marginLeft: "3rem" }}>

@@ -43,7 +43,8 @@ const Game = ({ game, characters, people }) => {
               <Image
                 src={getStrapiMedia(game.attributes.image)}
                 alt={`${game.attributes.name} logo`}
-                style={{ height: "25rem" }}
+                width={400}
+                height={400}
               ></Image>
             </Grid>
             <Grid item sx={{ marginBottom: "3rem", marginLeft: "3rem" }}>

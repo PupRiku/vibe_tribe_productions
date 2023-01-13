@@ -78,7 +78,8 @@ const PlayerCard = ({ person, character }) => {
                 <Image
                   src={getStrapiMedia(character.attributes.image)}
                   alt={`${character.attributes.name} art`}
-                  style={{ height: 225, width: 225 }}
+                  height={225}
+                  width={225}
                 />
               </Grid>
               <Grid item>
