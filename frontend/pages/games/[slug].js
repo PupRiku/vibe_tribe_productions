@@ -24,9 +24,14 @@ const Game = ({ game, characters, people }) => {
   })
 
   game.attributes.characters.data.forEach((pc) => {
+    console.log(characters)
     const filtered = characters.filter((char) => pc.id === char.id)
+    console.log(filtered)
     pcs.push(filtered.pop())
   })
+
+  console.log(players)
+  console.log(pcs)
 
   return (
     <Grid container direction="column">
@@ -102,18 +107,20 @@ const Game = ({ game, characters, people }) => {
             <Grid item sx={{ marginBottom: "3rem" }}>
               <Typography variant="h2">Players</Typography>
             </Grid>
-            <Grid container justifyContent="center">
-              {players.map((player) => {
-                const pc = pcs.filter(
-                  (char) => char.attributes.player.data.id === player.id
-                )
-                return (
-                  <Grid item key={`char_${player.id}`}>
-                    <PlayerCard person={player} character={pc[0]} />
-                  </Grid>
-                )
+            {/* <Grid container justifyContent="center">
+              {pcs.map((pc) => {
+                players.forEach((player) => {
+                  if (player.id === pc.attributes.player.data.id) {
+                    return (
+                      <Grid item key={`char_${player.id}`}>
+                        <PlayerCard person={player} character={pc} />
+                      </Grid>
+                    )
+                  }
+                  return null
+                })
               })}
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </Grid>
