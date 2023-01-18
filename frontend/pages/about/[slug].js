@@ -24,7 +24,9 @@ const Team = ({ games, shows, characters, person }) => {
   return (
     <Grid container direction="column">
       <Head>
-        <title key="title">{`About Us - ${person.attributes.firstName} ${person.attributes.lastName}`}</title>
+        <title key="title">{`About Us - ${
+          person.attributes.lastName === "." ? person.attributes.lastName : null
+        }`}</title>
         <meta
           name="description"
           key="description"
@@ -32,7 +34,11 @@ const Team = ({ games, shows, characters, person }) => {
         />
         <meta
           property="og:title"
-          content={`About Us - ${person.attributes.firstName} ${person.attributes.lastName}`}
+          content={`About Us - ${person.attributes.firstName} ${
+            person.attributes.lastName === "."
+              ? person.attributes.lastName
+              : null
+          }`}
           key="og:title"
         />
         <meta
@@ -53,14 +59,23 @@ const Team = ({ games, shows, characters, person }) => {
           </Grid>
           <Grid item sx={{ marginBottom: "3rem" }}>
             <Typography variant="h2">
-              {person.attributes.firstName} {person.attributes.lastName}
+              {person.attributes.firstName}{" "}
+              {`${
+                person.attributes.lastName === "."
+                  ? person.attributes.lastName
+                  : null
+              }`}
             </Typography>
           </Grid>
           <Grid container justifyContent="center">
             <Grid item sx={{ marginBottom: "3rem", marginLeft: "3rem" }}>
               <Image
                 src={getStrapiMedia(person.attributes.headshot)}
-                alt={`${person.attributes.firstName} ${person.attributes.firstName} headshot`}
+                alt={`${person.attributes.firstName} ${
+                  person.attributes.lastName === "."
+                    ? person.attributes.lastName
+                    : null
+                } headshot`}
                 height={400}
                 width={400}
               ></Image>

@@ -39,7 +39,11 @@ const PersonCard = ({ person, section, isAbout }) => {
           />
           <CardContent>
             <Typography variant="h3" component="div">
-              {`${person.attributes.firstName} ${person.attributes.lastName}`}
+              {`${person.attributes.firstName} ${
+                person.attributes.lastName === "."
+                  ? person.attributes.lastName
+                  : null
+              }`}
             </Typography>
             <Grid item>
               {section === "gm" ? (

@@ -33,7 +33,11 @@ const HostCard = ({ person }) => {
         />
         <CardContent>
           <Typography variant="h3" component="div">
-            {`${person.attributes.firstName} ${person.attributes.lastName}`}
+            {`${person.attributes.firstName} ${
+              person.attributes.lastName === "."
+                ? person.attributes.lastName
+                : null
+            }`}
           </Typography>
         </CardContent>
         <CardActions sx={{ justifyContent: "flex-end", marginTop: "auto" }}>
