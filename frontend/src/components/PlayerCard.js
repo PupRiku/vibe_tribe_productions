@@ -35,11 +35,7 @@ const PlayerCard = ({ person, character }) => {
         />
         <CardContent>
           <Typography variant="h3" component="div">
-            {`${person.attributes.firstName} ${
-              person.attributes.lastName === "."
-                ? person.attributes.lastName
-                : null
-            } as`}
+            {`${person.attributes.firstName} ${person.attributes.lastName} as`}
           </Typography>
           <Grid item>
             <Typography variant="h3" component="div">
@@ -114,16 +110,7 @@ const PlayerCard = ({ person, character }) => {
                             color: "#000",
                           }}
                         >
-                          {`Played by ${
-                            character.attributes.player.data.attributes
-                              .firstName
-                          } ${
-                            character.attributes.player.data.attributes
-                              .lastName === "."
-                              ? character.attributes.player.data.attributes
-                                  .lastName
-                              : null
-                          }`}
+                          {`Played by ${character.attributes.player.data.attributes.firstName} ${character.attributes.player.data.attributes.lastName}`}
                         </Button>
                       </Grid>
                     </Grid>

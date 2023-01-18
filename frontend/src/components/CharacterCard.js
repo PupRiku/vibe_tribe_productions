@@ -113,16 +113,7 @@ const CharacterCard = ({ character }) => {
                             color: "#000",
                           }}
                         >
-                          {`Played by ${
-                            character.attributes.player.data.attributes
-                              .firstName
-                          } ${
-                            character.attributes.player.data.attributes
-                              .lastName === "."
-                              ? character.attributes.player.data.attributes
-                                  .lastName
-                              : null
-                          }`}
+                          {`Played by ${character.attributes.player.data.attributes.firstName} ${character.attributes.player.data.attributes.lastName}`}
                         </Button>
                       </Grid>
                     </Grid>
